@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiker.bcp.user.dao.UserDAO">
+
+    <resultMap id="UserInfoMap" type="com.jiker.bcp.user.entity.UserInfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" property="username" jdbcType="BIGINT"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="contact_phone" property="contactPhone" jdbcType="BIGINT"/>
+        <result column="mail" property="mail" jdbcType="VARCHAR"/>
+        <result column="work_number" property="workNumber" jdbcType="BIGINT"/>
+        <result column="role_admin" property="roleAdmin" jdbcType="TINYINT"/>
+        <result column="verify" property="verify" jdbcType="TINYINT"/>
+        <result column="refusal_reason" property="refusalReason" jdbcType="VARCHAR"/>
+        <result column="validity" property="validity" jdbcType="TINYINT"/>
+        <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR"/>
+        <result column="collection_blog" property="collectionBlog" jdbcType="VARCHAR"/>
+        <result column="collection_room" property="collectionRoom" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="User_Info_List">
+        id, username, password, `name`,
+        contact_phone, mail, work_number, role_admin,
+        verify, refusal_reason, validity, picture_url,
+        collection_blog, collection_room
+    </sql>
+
+    <sql id="Select_By_Condition">
+        <where>
+            <if test="contactPhone != null">
+                AND contact_phone = #{contactPhone,jdbcType=BIGINT}
+            </if>
+            <if test="username != null and username != ''">
+                AND username = #{username,jdbcType=VARCHAR}
+            </if>
+            <if test="password != null and password != ''">
+                AND password = #{password,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.jiker.bcp.user.entity.UserInfo">
+        INSERT INTO user_info(
+            `password`,`name`,contact_phone,
+            mail,work_number,role_admin
+        )
+        VALUES (
+            #{password,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{contactPhone,jdbcType=BIGINT},
+            #{mail,jdbcType=VARCHAR},#{workNumber,jdbcType=BIGINT},#{roleAdmin,jdbcType=TINYINT}
+        )
+    </insert>
+
+    <select id="selectByCondition" parameterType="com.jiker.bcp.user.entity.UserInfo" resultMap="UserInfoMap">
+        SELECT
+        <include refid="User_Info_List"/>
+        FROM user_info
+        <include refid="Select_By_Condition"/>
+    </select>
+
+</mapper>

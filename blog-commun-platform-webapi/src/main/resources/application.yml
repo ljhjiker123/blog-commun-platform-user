@@ -1,0 +1,60 @@
+# 端口号
+server:
+  port: 8000
+
+# 服务名称
+spring:
+  application:
+    name: USER-SERVER
+
+  # 数据源配置
+  datasource:
+    username: root
+    password: joker61919980819
+    url: jdbc:mysql://localhost:3306/blogcommunicationplatform?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+  # redis 配置
+  redis:
+    # redis 数据库索引
+    database: 0
+    # redis 服务器连接地址
+    host: 172.22.6.97
+    # 端口号
+    port: 6379
+    # 连接池参数配置
+    pool:
+      # 最大连接数
+      max-active: 200
+      # 最大阻塞等待时间， 负数表示没有限制
+      max-wait: -1
+      # 最大空闲连接
+      max-idle: 10
+      # 最小空闲连接
+      min-idle: 0
+    # 连接超时时间
+    timeout: 5000
+
+mybatis:
+  mapper-locations: classpath:com/jiker/bcp/user/dao/*.xml
+
+# eureka 服务器配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    # 默认90s，服务过期时间配置，超过这个时间没有接收到心跳就将服务剔除
+    lease-expiration-duration-in-seconds: 15
+    # 默认30s，服务刷新时间配置，每隔这个时间会主动心跳一次
+    lease-renewal-interval-in-seconds: 5
+
+# swagger 配置
+swagger:
+  auth: Jiker
+  email: 810758134@qq.com
+  name: blog-commun-platform-user
+  title: User Server
+  url: /docs.html
+  version: 1.0
+  enable: true
