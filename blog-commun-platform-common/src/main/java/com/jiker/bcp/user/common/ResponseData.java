@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
+/**
+ * @author jiker.luo
+ * @date 2020/4/2
+ */
 @ApiModel
 public class ResponseData implements Serializable {
 

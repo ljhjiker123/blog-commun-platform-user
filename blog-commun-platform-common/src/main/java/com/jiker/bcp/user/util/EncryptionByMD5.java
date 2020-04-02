@@ -2,6 +2,10 @@ package com.jiker.bcp.user.util;
 
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * @author jiker.luo
+ * @date 2020/4/2
+ */
 public class EncryptionByMD5 {
 
     public static String getMD5(String src){

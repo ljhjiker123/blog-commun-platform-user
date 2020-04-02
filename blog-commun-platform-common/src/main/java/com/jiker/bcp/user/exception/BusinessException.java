@@ -2,6 +2,10 @@ package com.jiker.bcp.user.exception;
 
 import com.jiker.bcp.user.enums.BusinessCode;
 
+/**
+ * @author jiker.luo
+ * @date 2020/4/2
+ */
 public class BusinessException extends RuntimeException {
 
     private static final long serialVersionUID = 2416956018589745766L;

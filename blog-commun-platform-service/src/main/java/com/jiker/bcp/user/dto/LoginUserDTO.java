@@ -7,6 +7,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author jiker.luo
+ * @date 2020/4/2
+ */
 @ApiModel
 public class LoginUserDTO {
 

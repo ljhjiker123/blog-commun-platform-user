@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 操作 redis 工具类
- * 封装了 RedisTemplate 操作
+ * @author jiker.luo
+ * @date 2020/4/2
  */
 @Component
 public final class RedisUtil {

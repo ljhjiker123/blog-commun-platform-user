@@ -8,11 +8,14 @@ import com.jiker.bcp.user.entity.UserInfo;
 import com.jiker.bcp.user.exception.BusinessException;
 import com.jiker.bcp.user.service.UserService;
 import com.jiker.bcp.user.util.RedisUtil;
+import io.swagger.models.auth.In;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jiker.bcp.user.util.CacheBeanCopier;
+
+import java.util.function.Function;
 
 import static com.jiker.bcp.user.enums.BusinessCode.USER_REGISTER_ERROR;
 import static com.jiker.bcp.user.enums.BusinessCode.USER_EXISTED;

@@ -1,5 +1,9 @@
 package com.jiker.bcp.user.enums;
 
+/**
+ * @author jiker.luo
+ * @date 2020/4/2
+ */
 public enum BusinessCode {
 
     /**
