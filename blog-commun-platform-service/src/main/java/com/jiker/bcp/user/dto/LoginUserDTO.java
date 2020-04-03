@@ -16,7 +16,7 @@ public class LoginUserDTO {
 
     @ApiModelProperty(value = "用户名")
     @NotNull(message = "用户名不能为空",groups = {ValidatorGroup.Insert.class})
-    private String username;
+    private Long username;
 
     @ApiModelProperty(value = "密码")
     @NotNull(message = "密码不能为空",groups = {ValidatorGroup.Insert.class})
@@ -26,11 +26,11 @@ public class LoginUserDTO {
     @NotNull(message = "验证码不能为空",groups = {ValidatorGroup.Insert.class})
     private Long verifiCode;
 
-    public String getUsername() {
+    public Long getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Long username) {
         this.username = username;
     }
 

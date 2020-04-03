@@ -41,12 +41,12 @@ public class SwaggerConfig {
     private String serviceName;
 
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         Docket docket = null;
-        if (swaggerEnable){
+        if (swaggerEnable) {
             docket = new Docket(DocumentationType.SWAGGER_2)
                     .apiInfo(new ApiInfoBuilder().title(serviceName).description("数据传输接口")
-                        .version(version).contact(new Contact(name,url,email)).build())
+                            .version(version).contact(new Contact(name, url, email)).build())
                     .select()
                     .apis(RequestHandlerSelectors.basePackage("com.jiker"))
                     .paths(PathSelectors.any())

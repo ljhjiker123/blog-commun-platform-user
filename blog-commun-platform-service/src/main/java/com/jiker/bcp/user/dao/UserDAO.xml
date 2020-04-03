@@ -28,11 +28,14 @@
 
     <sql id="Select_By_Condition">
         <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
             <if test="contactPhone != null">
                 AND contact_phone = #{contactPhone,jdbcType=BIGINT}
             </if>
-            <if test="username != null and username != ''">
-                AND username = #{username,jdbcType=VARCHAR}
+            <if test="username != null">
+                AND username = #{username,jdbcType=BIGINT}
             </if>
             <if test="password != null and password != ''">
                 AND password = #{password,jdbcType=VARCHAR}
@@ -57,5 +60,56 @@
         FROM user_info
         <include refid="Select_By_Condition"/>
     </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="UserInfoMap">
+        SELECT
+        <include refid="User_Info_List"/>
+        FROM user_info
+        WHERE id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.jiker.bcp.user.entity.UserInfo">
+        UPDATE user_info
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=BIGINT},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="contactPhone != null">
+                contact_phone = #{contactPhone,jdbcType=BIGINT},
+            </if>
+            <if test="mail != null and mail != ''">
+                mail = #{mail,jdbcType=VARCHAR},
+            </if>
+            <if test="workNumber != null">
+                work_number = #{workNumber,jdbcType=BIGINT},
+            </if>
+            <if test="verify != null">
+                verify = #{verify,jdbcType=TINYINT},
+            </if>
+            <if test="refusalReason != null and password != ''">
+                refusal_reason = #{refusalReason,jdbcType=VARCHAR},
+            </if>
+            <if test="validity != null">
+                validity = #{validity,jdbcType=TINYINT},
+            </if>
+            <if test="pictureUrl != null and pictureUrl != ''">
+                picture_url = #{pictureUrl,jdbcType=BIGINT},
+            </if>
+            <if test="collectionBlog != null and collectionBlog != ''">
+                collection_blog = #{collectionBlog,jdbcType=VARCHAR},
+            </if>
+            <if test="collectionRoom != null and collectionRoom != ''">
+                collection_room = #{collectionRoom,jdbcType=VARCHAR},
+            </if>
+            create_time = create_time
+        </set>
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
 
 </mapper>

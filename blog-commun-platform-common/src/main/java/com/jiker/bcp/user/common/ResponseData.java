@@ -27,18 +27,18 @@ public class ResponseData implements Serializable {
     @ApiModelProperty(value = "message")
     private String message;
 
-    public ResponseData(){
+    public ResponseData() {
         super();
         this.code = ResponseCode.SUCCESS.getCode();
         this.message = ResponseCode.SUCCESS.getMessage();
     }
 
-    public ResponseData(String code,String message){
+    public ResponseData(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public ResponseData(Object data){
+    public ResponseData(Object data) {
         this.code = ResponseCode.SUCCESS.getCode();
         this.message = ResponseCode.SUCCESS.getMessage();
         this.data = data;

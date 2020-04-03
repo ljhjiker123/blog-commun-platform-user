@@ -2,30 +2,30 @@ package com.jiker.bcp.user.enums;
 
 /**
  * @author jiker.luo
- * @date 2020/4/2
+ * @date 2020/4/3
  */
-public enum ResponseCode {
+public enum ValidityCode {
 
     /**
-     * 系统统一返回码标识
+     * 审核状态统一标识
      */
-    SUCCESS("SYS.SUCCESS", "操作成功"),
-    PRAM_ERROR("SYS.PRAM_EXCEPTION", "参数错误"),
-    SERVER("SYS.SERVER_EXCEPTION", "网络异常");
+    PROHIBIT(0, "已禁用"),
+    NORMAL(1, "正常");
 
-    private String code;
+    private Integer code;
+
     private String message;
 
-    ResponseCode(String code, String message) {
+    ValidityCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -36,4 +36,5 @@ public enum ResponseCode {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

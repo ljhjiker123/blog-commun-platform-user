@@ -6,19 +6,19 @@ package com.jiker.bcp.user.validator;
  */
 public class ValidatorGroup {
 
-    public ValidatorGroup(){
+    public ValidatorGroup() {
     }
 
-    public interface Query{
+    public interface Query {
     }
 
-    public interface Insert{
+    public interface Insert {
     }
 
-    public interface Update{
+    public interface Update {
     }
 
-    public interface Delete{
+    public interface Delete {
     }
 
 }

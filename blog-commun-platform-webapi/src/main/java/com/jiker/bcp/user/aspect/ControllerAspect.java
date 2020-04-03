@@ -21,17 +21,17 @@ public class ControllerAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerAspect.class);
 
     @Around("execution(* com.jiker.bcp.user.controller.*.*(..))")
-    public Object process(ProceedingJoinPoint pjt){
+    public Object process(ProceedingJoinPoint pjt) {
         long startTime = System.currentTimeMillis();
         Object result;
         try {
             Object[] args = pjt.getArgs();
-            for (Object arg : args){
-                if (arg instanceof BindingResult){
+            for (Object arg : args) {
+                if (arg instanceof BindingResult) {
                     BindingResult rs = (BindingResult) arg;
-                    if (rs.hasErrors()){
+                    if (rs.hasErrors()) {
                         String errorMsg = rs.getFieldError().getDefaultMessage();
-                        result = new ResponseData(ResponseCode.PRAM_ERROR.getCode(),ResponseCode.PRAM_ERROR.getMessage());
+                        result = new ResponseData(ResponseCode.PRAM_ERROR.getCode(), ResponseCode.PRAM_ERROR.getMessage());
                         return result;
                     }
                     break;
@@ -39,14 +39,14 @@ public class ControllerAspect {
             }
 
             Object obj = pjt.proceed();
-            if (obj instanceof ResponseData){
+            if (obj instanceof ResponseData) {
                 result = obj;
             } else {
                 result = new ResponseData(obj);
             }
-        } catch (Throwable e){
-            LOGGER.error(e.getMessage(),e);
-            result = new ResponseData(ResponseCode.SERVER.getCode(),ResponseCode.SUCCESS.getMessage());
+        } catch (Throwable e) {
+            LOGGER.error(e.getMessage(), e);
+            result = new ResponseData(ResponseCode.SERVER.getCode(), ResponseCode.SUCCESS.getMessage());
         }
         return result;
     }

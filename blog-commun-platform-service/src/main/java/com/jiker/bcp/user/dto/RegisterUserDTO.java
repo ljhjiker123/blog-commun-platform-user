@@ -16,27 +16,27 @@ import javax.validation.constraints.NotNull;
 public class RegisterUserDTO {
 
     @ApiModelProperty(value = "密码")
-    @NotNull(message = "密码不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "密码不能为空", groups = {ValidatorGroup.Insert.class})
     private String password;
 
     @ApiModelProperty(value = "姓名")
-    @NotNull(message = "姓名不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "姓名不能为空", groups = {ValidatorGroup.Insert.class})
     private String name;
 
     @ApiModelProperty(value = "联系电话")
-    @NotNull(message = "联系电话不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "联系电话不能为空", groups = {ValidatorGroup.Insert.class})
     private Long contactPhone;
 
     @ApiModelProperty(value = "电子邮箱")
-    @NotNull(message = "电子邮箱不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "电子邮箱不能为空", groups = {ValidatorGroup.Insert.class})
     private String mail;
 
     @ApiModelProperty(value = "学号/工号")
-    @NotNull(message = "学号/工号不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "学号/工号不能为空", groups = {ValidatorGroup.Insert.class})
     private Long workNumber;
 
     @ApiModelProperty(value = "是否为管理员 0 否；1 是")
-    @NotNull(message = "是否为管理员不能为空",groups = {ValidatorGroup.Insert.class})
+    @NotNull(message = "是否为管理员不能为空", groups = {ValidatorGroup.Insert.class})
     private Integer roleAdmin;
 
     public String getPassword() {

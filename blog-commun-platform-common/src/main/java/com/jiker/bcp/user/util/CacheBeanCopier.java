@@ -13,23 +13,23 @@ public class CacheBeanCopier {
 
     static final Map<String, BeanCopier> BEAN_COPIERS = new HashMap<>();
 
-    public static void copy(Object srcObj,Object destObj){
-        if (srcObj == null){
+    public static void copy(Object srcObj, Object destObj) {
+        if (srcObj == null) {
             destObj = null;
             return;
         }
-        String key = genKey(srcObj.getClass(),destObj.getClass());
+        String key = genKey(srcObj.getClass(), destObj.getClass());
         BeanCopier copier = null;
-        if (!BEAN_COPIERS.containsKey(key)){
-            copier = BeanCopier.create(srcObj.getClass(),destObj.getClass(),false);
-            BEAN_COPIERS.put(key,copier);
+        if (!BEAN_COPIERS.containsKey(key)) {
+            copier = BeanCopier.create(srcObj.getClass(), destObj.getClass(), false);
+            BEAN_COPIERS.put(key, copier);
         } else {
             copier = BEAN_COPIERS.get(key);
         }
-        copier.copy(srcObj,destObj,null);
+        copier.copy(srcObj, destObj, null);
     }
 
-    private static String genKey(Class<?> srcClass,Class<?> destClass){
+    private static String genKey(Class<?> srcClass, Class<?> destClass) {
         return srcClass.getName() + destClass.getName();
     }
 
