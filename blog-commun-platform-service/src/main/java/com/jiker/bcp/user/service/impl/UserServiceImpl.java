@@ -212,7 +212,6 @@ public class UserServiceImpl implements UserService {
         return flag;
     }
 
-
     /**
      * 随机生成6位数验证码
      *
